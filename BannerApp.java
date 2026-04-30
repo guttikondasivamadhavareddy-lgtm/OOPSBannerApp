@@ -1,12 +1,14 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class OOPSBannerApp {
+public class BannerApp {
 
+    // Method to create character patterns
     public static Map<Character, String[]> getCharacterPatterns() {
 
         Map<Character, String[]> map = new HashMap<>();
 
+        // Pattern for 'O'
         map.put('O', new String[]{
                 " *** ",
                 "*   *",
@@ -15,6 +17,7 @@ public class OOPSBannerApp {
                 " *** "
         });
 
+        // Pattern for 'P'
         map.put('P', new String[]{
                 "**** ",
                 "*   *",
@@ -23,6 +26,7 @@ public class OOPSBannerApp {
                 "*    "
         });
 
+        // Pattern for 'S'
         map.put('S', new String[]{
                 " ****",
                 "*    ",
@@ -34,24 +38,22 @@ public class OOPSBannerApp {
         return map;
     }
 
+    // Method to display banner
     public static void printBanner(String text, Map<Character, String[]> patterns) {
 
-        int height = 5;
+        int height = 5; // number of rows in each character
 
-        text = text.toUpperCase(); // ✅ fix lowercase issue
-
-        for (int i = 0; i < height; i++) {
+        for (int i = 0; i < height; i++) {   // row loop
 
             StringBuilder line = new StringBuilder();
 
-            for (char ch : text.toCharArray()) {
-
+            for (char ch : text.toCharArray()) {   // character loop
                 String[] pattern = patterns.get(ch);
 
                 if (pattern != null) {
-                    line.append(pattern[i]).append("   ");
+                    line.append(pattern[i]).append("  ");
                 } else {
-                    line.append("      ");
+                    line.append("     "); // blank for unknown chars
                 }
             }
 
@@ -61,10 +63,15 @@ public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
+        // Step 1: Get patterns
         Map<Character, String[]> patterns = getCharacterPatterns();
 
+        // Step 2: Word to print
         String word = "OOPS";
 
+        // Step 3: Print banner
         printBanner(word, patterns);
+
+      
     }
 }
